@@ -1,10 +1,11 @@
 ### Primary
 
-> docker run -d --network local-network -p 27017:27017 --name mongodb-replset-primary mongo:latest mongod --replSet repl-set
+```bash
+docker run -d --network local-network -p 27017:27017 --name mongodb-replset-primary mongo:latest mongod --replSet repl-set
 
-> docker exec -it mongodb-replset-primary mongosh
+docker exec -it mongodb-replset-primary mongosh
 
-> config = {
+config = {
   "_id" : "repl-set",
   "members" : [
     {
@@ -18,30 +19,29 @@
   ]
 }
 
-> rs.initiate(config)
-
+rs.initiate(config)
+```
 
 ### Sencondaries
 
-> docker run -d --network local-network -p 27018:27017 --name mongodb-replset-secondary mongo:latest mongod --replSet repl-set
+```bash
+docker run -d --network local-network -p 27018:27017 --name mongodb-replset-secondary mongo:latest mongod --replSet repl-set
 
-> docker exec -it mongodb-replset-secondary mongosh
-
+docker exec -it mongodb-replset-secondary mongosh
+```
 
 ### Add hosts
 
-#Docker Local MongoDB Replica Set
-
+```txt
+# Docker Local MongoDB Replica Set
 127.0.0.1 mongodb-replset-primary mongodb-replset-secondary
-
-#End of section
-
+# End of section
+```
 
 ### Inspect Network
 
 docker network inspect local-network | grep 'mongodb-replset'
 
-
-### Conection String
+### Connection String
 
 DATABASE_URL="mongodb://localhost:27017,localhost:27018/test?replicaSet=repl-set"
