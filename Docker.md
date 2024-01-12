@@ -17,7 +17,7 @@
     }
   ]
 }
-> 
+
 > rs.initiate(config)
 
 
