@@ -40,7 +40,9 @@ docker exec -it mongodb-replset-secondary mongosh
 
 ### Inspect Network
 
+```bash
 docker network inspect local-network | grep 'mongodb-replset'
+```
 
 ### Connection String
 
