@@ -46,4 +46,6 @@ docker network inspect local-network | grep 'mongodb-replset'
 
 ### Connection String
 
+```txt
 DATABASE_URL="mongodb://localhost:27017,localhost:27018/test?replicaSet=repl-set"
+```
